@@ -221,7 +221,7 @@ function! s:InsertPair(opener)
 
     let l:next = s:GetNextChar()
     " only add closing pair before space or any of the closepair chars
-    let close_before = '\s\|\V\[,.;<>' . escape(join(keys(b:AutoClosePairs) + values(b:AutoClosePairs), ''), ']').']'
+    let close_before = '\s\|\V\[,.;<>\/' . escape(join(keys(b:AutoClosePairs) + values(b:AutoClosePairs), ''), ']').']'
     if (l:next == "\0" || l:next =~ close_before) && s:AllowQuote(a:opener, 0)
         call s:InsertStringAtCursor(b:AutoClosePairs[a:opener])
         call s:PushBuffer(b:AutoClosePairs[a:opener])
